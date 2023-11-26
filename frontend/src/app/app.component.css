@@ -1,0 +1,16 @@
+
+.em-desenvolvimento {
+  position: fixed;
+  top: 9em;
+  right: -3em;
+  width: 15em;
+  padding: 10px;
+  background-color: #00d6a0;
+  color: white;
+  text-align: center;
+  z-index: 1000;
+  transform: rotate(45deg);
+  transform-origin: top right;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}

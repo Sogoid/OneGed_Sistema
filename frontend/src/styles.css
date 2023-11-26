@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+  /* Palheta de cores*/
+  --primaria-color: #00d6a0;
+  --segundaria-color: white;
+  --hover-color-bg: orange;
+  --terceira-color: red;
+  --quarta-color: black;
+  --backgroud-color: #00d6a0;
+  --backgroud-color-Beneficios: #88888888;
+  --border-color: black;
+  /*Final da Palheta de cores*/
+
+}
+
+html, body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
