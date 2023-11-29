@@ -3,7 +3,7 @@
 :root {
   /* Palheta de cores*/
   --primaria-color: #00d6a0;
-  --segundaria-color: white;
+  --segunda-color: white;
   --hover-color-bg: orange;
   --terceira-color: red;
   --quarta-color: black;
@@ -14,7 +14,8 @@
 
 }
 
-html, body {
+html,
+body {
   height: 100vh;
 }
 
@@ -23,3 +24,8 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.mat-typography {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

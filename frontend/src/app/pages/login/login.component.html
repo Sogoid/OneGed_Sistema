@@ -1,8 +1,16 @@
 <div class="container">
   <mat-card class="container-logo">
-    <img alt="Logo OneGed" height="90" ngSrc="./assets/img/log-OneGed.svg" priority width="112">
+    <img
+      alt="Logo OneGed"
+      height="90"
+      ngSrc="./assets/img/log-OneGed.svg"
+      priority
+      width="112"
+    />
     <div class="container-logo_text">
-      <mat-card-content>SISTEMA DE GERENCIAMENTO PARA ARQUIVOS</mat-card-content>
+      <mat-card-content
+        >SISTEMA DE GERENCIAMENTO PARA ARQUIVOS</mat-card-content
+      >
     </div>
   </mat-card>
   <mat-card>
@@ -10,38 +18,49 @@
       <div class="container-form">
         <mat-form-field>
           <mat-label>Usuário</mat-label>
-          <input #input matInput maxlength="10" placeholder="Ex. Nougat">
+          <input #input matInput maxlength="10" placeholder="Ex. Nougat" />
         </mat-form-field>
         <mat-form-field>
           <mat-label>Enter your password</mat-label>
-          <input [type]="hide ? 'password' : 'text'" matInput>
-          <button (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" mat-icon-button
-                  matSuffix>
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          <input [type]="hide ? 'password' : 'text'" matInput />
+          <button
+            (click)="hide = !hide"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide"
+            mat-icon-button
+            matSuffix
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
           </button>
         </mat-form-field>
       </div>
     </mat-card-content>
 
-
     <mat-card-actions class="btn">
       <button color="accent" mat-raised-button>
         Entrar
-        <mat-icon aria-hidden="false" aria-label="Icon de Entrada" fontIcon="door_front">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icon de Entrada"
+          fontIcon="door_front"
+        >
         </mat-icon>
       </button>
       <button color="warn" mat-flat-button>
         Sair
-        <mat-icon aria-hidden="false" aria-label="Icon de saida" fontIcon="logout">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icon de saída"
+          fontIcon="logout"
+        >
         </mat-icon>
       </button>
     </mat-card-actions>
-    <hr class="custom-hr">
+    <hr class="custom-hr" />
     <ul class="container-text_create">
       <li class="list-unstyled">Não tem Conta!</li>
-      <li><a class="list-unstyled" href="#" title="Cadastrar-se">
-
-        <span>Cadastrar-se</span></a>
+      <li class="list-unstyled">
+        <a class="list-unstyled" href="#" title="Cadastrar-se"> Cadastrar-se</a>
       </li>
     </ul>
   </mat-card>

@@ -1,0 +1,40 @@
+.container {
+  height: 98vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+}
+
+.container-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+}
+
+.container-logo {
+  margin-top: 1em;
+  width: 6em;
+}
+
+.nav li {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+  width: 8em;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: initial;
+  width: 10em;
+}

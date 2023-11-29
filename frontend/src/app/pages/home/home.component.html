@@ -1,0 +1,13 @@
+<mat-drawer-container class="container">
+  <mat-drawer #drawer mode="side" opened>
+    <app-menu-side-nav></app-menu-side-nav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div class="sidenav-content">
+      <button type="button" mat-button (click)="drawer.toggle()">
+        <mat-icon>open_in_full</mat-icon>
+      </button>
+    </div>
+    Main content
+  </mat-drawer-content>
+</mat-drawer-container>

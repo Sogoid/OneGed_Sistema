@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="container-logo">
+    <img
+      mat-card-image
+      src="../../../assets/img/log-OneGed.svg"
+      alt="Logo OneGed"
+    />
+  </div>
+
+  <section class="container-menu">
+    <button mat-button routerLink=".">
+      <mat-icon>home</mat-icon>
+      <span> Home </span>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuCreate">
+      <mat-icon>app_registration</mat-icon>
+      <span> Cadastro </span>
+    </button>
+    <mat-menu #menuCreate="matMenu">
+      <button class="btn" mat-menu-item>
+        <mat-icon>person_add</mat-icon>
+        <span> Usuário </span>
+      </button>
+      <button class="btn" mat-menu-item>
+        <mat-icon>group_add</mat-icon>
+        <span> GRUPO </span>
+      </button>
+    </mat-menu>
+
+    <button mat-button routerLink=".">
+      <mat-icon>cloud_upload</mat-icon>
+      <span> Upload Documento </span>
+    </button>
+    <button mat-button [matMenuTriggerFor]="menuList">
+      <mat-icon>list_alt</mat-icon>
+      <span> Listagem </span>
+    </button>
+    <mat-menu #menuList="matMenu">
+      <button class="btn" mat-menu-item>
+        <mat-icon>lists</mat-icon>
+        <span> Usuário </span>
+      </button>
+      <button class="btn" mat-menu-item>
+        <mat-icon>lists</mat-icon>
+        <span> Documento </span>
+      </button>
+    </mat-menu>
+  </section>
+  <section class="container-menu">
+    <button mat-button [matMenuTriggerFor]="menuConf">
+      <mat-icon>list_alt</mat-icon>
+      <span> Configuração </span>
+    </button>
+    <mat-menu #menuConf="matMenu">
+      <button class="btn" mat-menu-item>
+        <mat-icon>settings_account_box</mat-icon>
+        <span> Usuário </span>
+      </button>
+    </mat-menu>
+    <button mat-button routerLink=".">
+      <mat-icon>exit_to_app</mat-icon>
+      <span> Sair </span>
+    </button>
+  </section>
+</div>
