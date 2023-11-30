@@ -1,0 +1,35 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content class="container-form">
+      <mat-form-field appearance="fill">
+        <mat-label>CÓDIGO</mat-label>
+        <input #input matInput maxlength="10" disabled />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>DESCRIÇÃO DO GRUPO</mat-label>
+        <input type="text" matInput maxlength="10" />
+        <mat-icon matSuffix>edit_square</mat-icon>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="btn">
+      <button class="btn-content" color="accent" mat-raised-button>
+        SALVAR
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icon de Entrada"
+          fontIcon="save"
+        >
+        </mat-icon>
+      </button>
+      <button color="warn" class="btn-content" mat-raised-button>
+        CANCELAR
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icon de saída"
+          fontIcon="cancel"
+        >
+        </mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

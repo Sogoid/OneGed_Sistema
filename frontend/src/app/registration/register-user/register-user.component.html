@@ -1,0 +1,98 @@
+<div class="container">
+  <mat-card>
+    <mat-card-content class="container-form">
+      <div class="container-form_header">
+        <div>
+          <form [formGroup]="options">
+            <mat-checkbox [formControl]="hideRequiredControl"
+              >STATUS</mat-checkbox
+            >
+          </form>
+          <mat-hint>ATIVO / INATIVO</mat-hint>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>CÓDIGO</mat-label>
+          <input #input matInput maxlength="10" disabled />
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill">
+        <mat-label>TIPO</mat-label>
+        <input #input matInput maxlength="10" disabled />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>NOME COMPLETO</mat-label>
+        <input
+          type="text"
+          matInput
+          maxlength="10"
+          placeholder="Ex: JOAO DA SILVA"
+        />
+        <mat-icon matSuffix>edit_square</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>E-MAIL</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="emailFormControl"
+          [errorStateMatcher]="matcher"
+          maxlength="10"
+          placeholder="Ex: JOAO@email.com"
+        />
+        <mat-icon matSuffix>mail</mat-icon>
+        @if (emailFormControl.hasError('email') &&
+        !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+        } @if (emailFormControl.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>DIGITE SUA SENHA.</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput />
+        <button
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          mat-icon-button
+          matSuffix
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>REPITA SUA SENHA.</mat-label>
+        <input [type]="hide ? 'password' : 'text'" matInput />
+        <button
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+          mat-icon-button
+          matSuffix
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="btn">
+      <button class="btn-content" color="accent" mat-raised-button>
+        SALVAR
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icon de Entrada"
+          fontIcon="save"
+        >
+        </mat-icon>
+      </button>
+      <button color="warn" class="btn-content" mat-raised-button>
+        CANCELAR
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Icon de saída"
+          fontIcon="cancel"
+        >
+        </mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

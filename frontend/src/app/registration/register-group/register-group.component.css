@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+}
+
+.container-form {
+  display: flex;
+  flex-direction: column;
+  padding: 5em;
+}
+
+.container-form_header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.container-form_header mat-form-field {
+  width: 8em;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  gap: 5em;
+}
+
+.btn-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.51em;
+}

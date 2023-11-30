@@ -8,7 +8,7 @@
   </div>
 
   <section class="container-menu">
-    <button mat-button routerLink=".">
+    <button mat-button [routerLink]="home">
       <mat-icon>home</mat-icon>
       <span> Home </span>
     </button>
@@ -17,17 +17,28 @@
       <span> Cadastro </span>
     </button>
     <mat-menu #menuCreate="matMenu">
-      <button class="btn" mat-menu-item>
+      <button
+        class="btn"
+        mat-menu-item
+        [routerLink]="['/dashboard', { outlets: { main: 'cadastro-usuario' } }]"
+      >
         <mat-icon>person_add</mat-icon>
         <span> Usuário </span>
       </button>
-      <button class="btn" mat-menu-item>
+      <button
+        class="btn"
+        mat-menu-item
+        [routerLink]="['/dashboard', { outlets: { main: 'cadastro-grupo' } }]"
+      >
         <mat-icon>group_add</mat-icon>
         <span> GRUPO </span>
       </button>
     </mat-menu>
 
-    <button mat-button routerLink=".">
+    <button
+      mat-button
+      [routerLink]="['/dashboard', { outlets: { main: 'upload-file' } }]"
+    >
       <mat-icon>cloud_upload</mat-icon>
       <span> Upload Documento </span>
     </button>
@@ -36,11 +47,19 @@
       <span> Listagem </span>
     </button>
     <mat-menu #menuList="matMenu">
-      <button class="btn" mat-menu-item>
+      <button
+        class="btn"
+        mat-menu-item
+        [routerLink]="['/dashboard', { outlets: { main: 'user-list' } }]"
+      >
         <mat-icon>lists</mat-icon>
         <span> Usuário </span>
       </button>
-      <button class="btn" mat-menu-item>
+      <button
+        class="btn"
+        mat-menu-item
+        [routerLink]="['/dashboard', { outlets: { main: 'file-list' } }]"
+      >
         <mat-icon>lists</mat-icon>
         <span> Documento </span>
       </button>

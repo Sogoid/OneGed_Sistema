@@ -1,0 +1,19 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  border: 1px solid #555;
+}
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.sidenav-content {
+  align-self: flex-start;
+  position: absolute;
+  top: 0;
+}
