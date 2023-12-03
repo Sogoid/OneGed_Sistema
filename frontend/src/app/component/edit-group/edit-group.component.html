@@ -6,34 +6,10 @@
         <input #input matInput maxlength="10" disabled />
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label>NOME DO DOCUMENTO</mat-label>
-        <input type="text" matInput maxlength="20" />
+        <mat-label>DESCRIÇÃO DO GRUPO</mat-label>
+        <input type="text" matInput maxlength="10" />
         <mat-icon matSuffix>edit_square</mat-icon>
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>DESCRIÇÃO DO DOCUMENTO</mat-label>
-        <textarea matInput></textarea>
-      </mat-form-field>
-      <input
-        type="file"
-        class="input-file"
-        (change)="onFileSelected($event)"
-        #fileUpload
-      />
-      <button
-        color="primary"
-        class="file-upload"
-        mat-raised-button
-        (click)="fileUpload.click()"
-      >
-        FAZER UPLOAD DE ARQUIVO
-        <mat-icon
-          aria-hidden="false"
-          aria-label="Icon de Entrada"
-          fontIcon="cloud_upload"
-        >
-        </mat-icon>
-      </button>
     </mat-card-content>
     <mat-card-actions class="btn">
       <button class="btn-content" color="accent" mat-raised-button>

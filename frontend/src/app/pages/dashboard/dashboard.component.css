@@ -17,3 +17,9 @@
   position: absolute;
   top: 0;
 }
+
+.btn-open {
+  transform: scale(0.8);
+
+}
+

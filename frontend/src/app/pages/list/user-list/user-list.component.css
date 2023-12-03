@@ -1,0 +1,15 @@
+ @import "../../../../styles.css";
+
+ .container-card {
+   width: 80vw;
+   height: 100vh;
+ }
+
+ .btn-icon {
+   cursor: pointer;
+ }
+
+ .mat-mdc-form-field {
+   font-size: 14px;
+   width: 100%;
+ }

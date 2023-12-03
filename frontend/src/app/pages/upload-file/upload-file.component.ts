@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from "@angular/material/button";
+import { UploadFileService } from '../../service/upload-file.service';
+
 
 
 @Component({
@@ -28,6 +30,28 @@ import { MatButtonModule } from "@angular/material/button";
   templateUrl: './upload-file.component.html',
   styleUrl: './upload-file.component.css'
 })
+
 export class UploadFileComponent {
+
+  file: File | null = null;
+  progress: number = 0;
+
+  constructor(private uploadService: UploadFileService) { }
+
+  onFileSelected(event: Event) {
+    const target = event.target as HTMLInputElement;
+    this.file = target?.files?.[0] || null;
+  }
+
+  uploadFile() {
+    if (!this.file) {
+      return;
+    }
+
+    this.uploadService.uploadFile(this.file).subscribe(progress => {
+      this.progress = progress;
+    });
+  }
+
 
 }

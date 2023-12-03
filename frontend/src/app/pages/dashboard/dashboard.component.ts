@@ -9,6 +9,7 @@ import { UploadFileComponent } from '../upload-file/upload-file.component';
 import { RegisterUserComponent } from '../../registration/register-user/register-user.component';
 import { RegisterGroupComponent } from '../../registration/register-group/register-group.component';
 import { RouterOutlet } from '@angular/router';
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,7 @@ import { RouterOutlet } from '@angular/router';
     FileListComponent,
     UserListComponent,
     UploadFileComponent,
+    MatButtonModule,
     RouterOutlet],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
