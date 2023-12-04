@@ -12,15 +12,16 @@ export class UserService {
 
   private url = `${environment.api}/api`;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private _httpClient: HttpClient) {
 
   }
 
   obterUser() {
-    return this.httpClient.get<PeriodicElementUser[]>(this.url);
+    return this._httpClient.get<PeriodicElementUser[]>(this.url);
   }
 
-  createUser(newUser: CreateUser) {
-    return this.httpClient.post<PeriodicElementUser[]>(`${this.url}/createUser`, newUser)
+createUser(newUser: CreateUser) {
+    return this._httpClient.post<PeriodicElementUser[]>(`${this.url}/createUser`, newUser)
   }
+
 }

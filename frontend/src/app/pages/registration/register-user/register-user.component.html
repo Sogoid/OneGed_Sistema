@@ -18,7 +18,7 @@
         </div>
         <mat-form-field appearance="fill">
           <mat-label>CÓDIGO</mat-label>
-          <input #input matInput maxlength="10" disabled />
+          <input #input matInput maxlength="10" placeholder="0" disabled />
         </mat-form-field>
       </div>
       <form [formGroup]="userForm">
@@ -61,6 +61,7 @@
               [type]="hide ? 'password' : 'text'"
               matInput
               formControlName="senhaUser"
+              placeholder="Password"
             />
             <button
               (click)="hide = !hide"
@@ -78,6 +79,7 @@
               [type]="hide ? 'password' : 'text'"
               matInput
               formControlName="confirmPassword"
+              placeholder="Confirme Password"
             />
             <button
               (click)="hide = !hide"

@@ -19,7 +19,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from "@angular/material/button";
 import { Observable } from 'rxjs';
 import { PeriodicElementUser } from '../../../models/periodic-element-user.model';
-import { SharedModule } from '../../../shared/shared.module';
 import { CreateUser } from '../../../models/base-element.model';
 import { UserService } from '../../../service/user.service';
 
@@ -45,7 +44,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     ReactiveFormsModule,
     MatCheckboxModule,
     MatButtonModule,
-    SharedModule],
+    ],
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css',
   providers: [PeriodicElementUser]
@@ -82,10 +81,10 @@ export class RegisterUserComponent {
   }
 
   saveUserClick() {
-    if (this.userForm.valid) {
-      const newUser: CreateUser = this.userForm.value;
-      console.log(newUser);
-      this.userService.createUser(newUser).subscribe({
+  if (this.userForm.valid) {
+    const newUser: CreateUser = this.userForm.value;
+    this.userService.createUser(newUser)
+      .subscribe({
         next: (response) => {
           console.log(response);
         },
@@ -96,8 +95,9 @@ export class RegisterUserComponent {
           console.log('Operação concluída');
         }
       });
-    }
   }
+}
+
 
 
 }
