@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { FileListComponent } from '../list/file-list/file-list.component';
 import { UserListComponent } from '../list/user-list/user-list.component';
 import { UploadFileComponent } from '../upload-file/upload-file.component';
-import { RegisterUserComponent } from '../../registration/register-user/register-user.component';
-import { RegisterGroupComponent } from '../../registration/register-group/register-group.component';
+import { RegisterUserComponent } from '../registration/register-user/register-user.component';
+import { RegisterGroupComponent } from '../registration/register-group/register-group.component';
 import { RouterOutlet } from '@angular/router';
 import { MatButtonModule } from "@angular/material/button";
 

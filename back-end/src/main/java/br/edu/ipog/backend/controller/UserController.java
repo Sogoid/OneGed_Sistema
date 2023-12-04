@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api")
 public class UserController {
 
     private final UserService userService;
@@ -22,13 +22,26 @@ public class UserController {
     }
 
     // Endpoint de buscar os Users
-    @GetMapping("/search")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping
     public List<UserModel> getAllUser() {
         return userRepository.findAll();
     }
 
-    @PostMapping("/registrar")
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PostMapping("/createUser")
     public UserModel registrar(@RequestBody UserModel userModel) {
         return userService.saveUser(userModel);
     }
+
+    @PutMapping
+    public UserModel atualizar(@RequestBody UserModel userModel) {
+        return userRepository.save(userModel);
+    }
+
+    @DeleteMapping("/{id_user}")
+    public void excluir(@PathVariable Long id_user) {
+        userRepository.deleteById(id_user);
+    }
 }
+

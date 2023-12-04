@@ -13,7 +13,7 @@ import {
 } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from "@angular/material/button";
-import { MyErrorStateMatcher } from '../../registration/register-user/register-user.component';
+import { MyErrorStateMatcher } from '../../pages/registration/register-user/register-user.component';
 
 @Component({
   selector: 'app-edit-user',

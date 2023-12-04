@@ -1,0 +1,53 @@
+ @import "../../../../styles.css";
+
+ .container {
+   display: flex;
+ }
+
+ .container-form {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .container-form_header {
+   display: flex;
+   color: white;
+   flex-direction: row-reverse;
+   gap: 5em;
+ }
+
+ .container-form_header_checkbox {
+   display: flex;
+   gap: 2em;
+
+ }
+
+ .container-form_header_checkbox-form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+ }
+
+ .container-input {
+   display: flex;
+   flex-direction: column;
+ }
+
+ .btn {
+   display: flex;
+   justify-content: center;
+   gap: 5em;
+ }
+
+ .btn-content {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.51em;
+ }
+
+ .container-password {
+   display: flex;
+   justify-content: space-around;
+ }

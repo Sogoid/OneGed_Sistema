@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditGroupComponent } from '../../../component/edit-group/edit-group.component';
+import { PeriodicElementFile } from '../../../models/periodic-element-file.model';
 
 @Component({
   selector: 'app-file-list',
@@ -25,15 +26,14 @@ import { EditGroupComponent } from '../../../component/edit-group/edit-group.com
   styleUrl: './file-list.component.css'
 })
 export class FileListComponent {
-  displayedColumns: string[] = ['position', 'descricao', 'edit', 'delete'];
+  displayedColumns: string[] = ['id_documento', 'descricao', 'edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
-  dataToDisplay: PeriodicElement[] = [...ELEMENT_DATA];
+  dataToDisplay: PeriodicElementFile[] = [...ELEMENT_DATA];
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
 
   constructor(public dialog: MatDialog) { }
 
@@ -45,8 +45,8 @@ export class FileListComponent {
     });
   }
 
-  removeData(position: number) {
-    const index = this.dataToDisplay.findIndex(element => element.position === position);
+  removeData(id_documento: number) {
+    const index = this.dataToDisplay.findIndex(element => element.id === id_documento);
     if (index !== -1) {
       this.dataToDisplay.splice(index, 1);
       this.dataSource = new MatTableDataSource(this.dataToDisplay);
@@ -54,13 +54,8 @@ export class FileListComponent {
   }
 }
 
-export interface PeriodicElement {
-  position: number;
-  descricao: string;
 
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, descricao: "1.0079" },
+const ELEMENT_DATA: PeriodicElementFile[] = [
+  { id: 1, descricao: "1.0079" },
 
 ];

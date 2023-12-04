@@ -4,8 +4,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { UserListComponent } from './pages/list/user-list/user-list.component';
 import { FileListComponent } from './pages/list/file-list/file-list.component';
 import { UploadFileComponent } from './pages/upload-file/upload-file.component';
-import { RegisterUserComponent } from './registration/register-user/register-user.component';
-import { RegisterGroupComponent } from './registration/register-group/register-group.component';
+import { RegisterUserComponent } from './pages/registration/register-user/register-user.component';
+import { RegisterGroupComponent } from './pages/registration/register-group/register-group.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [

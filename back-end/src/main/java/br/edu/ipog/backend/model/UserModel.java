@@ -27,10 +27,10 @@ import java.util.List;
     private String senhaUser;
     @Setter
     @Column(name = "status_user", nullable = false, length = 1)
-    private String statusUser; // Status do usuário, quando for Ativo - A e quanto for Bloqueado - B.
+    private Boolean statusUser; // Status do usuário, quando for Ativo - A e quanto for Bloqueado - B.
     @Setter
     @Column(name = "tipo_user", nullable = false, length = 1)
-    private String tipoUser; // Tipo do usuário, quando for Admin - A e quando for User - U.
+    private Boolean tipoUser; // Tipo do usuário, quando for Admin - A e quando for User - U.
     @Setter
     @Column(name = "deleted_user", nullable = false)
     private Boolean deletedUser; // Para marcar o usuário como deletado, pois assim não exclui todos os dados do usuário.
@@ -46,7 +46,7 @@ import java.util.List;
 
     }
 
-    public UserModel(Long idUser, String nameUser, String emailUser, String senhaUser, String statusUser, String tipoUser, Boolean deletedUser) {
+    public UserModel(Long idUser, String nameUser, String emailUser, String senhaUser, Boolean statusUser, Boolean tipoUser, Boolean deletedUser) {
         this.idUser = idUser;
         this.nameUser = nameUser;
         this.emailUser = emailUser;

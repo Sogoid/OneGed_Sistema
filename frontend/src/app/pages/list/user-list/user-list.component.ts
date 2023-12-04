@@ -8,7 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditUserComponent } from '../../../component/edit-user/edit-user.component';
-
+import { PeriodicElementUser } from '../../../models/periodic-element-user.model';
+import { Observable } from 'rxjs';
+import { UserService } from '../../../service/user.service';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-user-list',
@@ -21,24 +24,36 @@ import { EditUserComponent } from '../../../component/edit-user/edit-user.compon
     MatTableModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatIconModule],
+    MatIconModule,
+    SharedModule],
   templateUrl: './user-list.component.html',
-  styleUrl: './user-list.component.css'
+  styleUrl: './user-list.component.css',
+  providers: [UserService]
 })
 
 export class UserListComponent {
 
-  displayedColumns: string[] = ['position', 'status', 'type', 'name', 'email', 'edit', 'delete'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
-  dataToDisplay: PeriodicElement[] = [...ELEMENT_DATA];
+  userList$ = new Observable<PeriodicElementUser[]>();
+  dataToDisplay: PeriodicElementUser[] = [];
+  dataSource = new MatTableDataSource(this.dataToDisplay);
+
+  constructor(public dialog: MatDialog, private userService: UserService) {
+    this.obterUser();
+  }
+
+  obterUser() {
+    this.userService.obterUser().subscribe(data => {
+      this.dataToDisplay = data;
+      this.dataSource = new MatTableDataSource(this.dataToDisplay);
+    });
+  }
+
+  displayedColumns: string[] = ['id_user', 'status', 'type', 'nameUser', 'email', 'edit', 'delete'];
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-
-  constructor(public dialog: MatDialog) { }
 
   openDialog() {
     const dialogRef = this.dialog.open(EditUserComponent);
@@ -48,24 +63,11 @@ export class UserListComponent {
     });
   }
 
-  removeData(position: number) {
-    const index = this.dataToDisplay.findIndex(element => element.position === position);
+  removeData(id_user: number) {
+    const index = this.dataToDisplay.findIndex(element => element.id === id_user);
     if (index !== -1) {
       this.dataToDisplay.splice(index, 1);
       this.dataSource = new MatTableDataSource(this.dataToDisplay);
     }
   }
 }
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  status: boolean;
-  type: boolean;
-  email: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, status: false, type: true, name: 'Hydrogen', email: "1.0079" },
-
-];

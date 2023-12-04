@@ -40,7 +40,7 @@ export class UploadFileComponent {
 
   onFileSelected(event: Event) {
     const target = event.target as HTMLInputElement;
-    this.file = target?.files?.[0] || null;
+    this.file = target?.files?.[0] ?? null;
   }
 
   uploadFile() {
