@@ -33,7 +33,7 @@ import java.util.List;
     private Boolean tipoUser; // Tipo do usuário, quando for Admin - A e quando for User - U.
     @Setter
     @Column(name = "deleted_user", nullable = false)
-    private Boolean deletedUser; // Para marcar o usuário como deletado, pois assim não exclui todos os dados do usuário.
+    private Boolean deletedUser = false; // Para marcar o usuário como deletado, pois assim não exclui todos os dados do usuário.
 
     @OneToMany(mappedBy = "userModel")
     private List<PertenceModel> pertenceModelList;
@@ -49,12 +49,11 @@ import java.util.List;
     public UserModel(Long idUser, String nameUser, String emailUser, String senhaUser, Boolean statusUser, Boolean tipoUser, Boolean deletedUser) {
         this.idUser = idUser;
         this.nameUser = nameUser;
-        this.emailUser = emailUser;
+        this.emailUser = emailUser ;
         this.senhaUser = senhaUser;
         this.statusUser = statusUser;
         this.tipoUser = tipoUser;
-        this.deletedUser = deletedUser;
+        this.deletedUser = deletedUser != null ? deletedUser : false;
     }
-
 
 }

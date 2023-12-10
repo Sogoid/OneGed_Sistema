@@ -21,6 +21,8 @@ import { Observable } from 'rxjs';
 import { PeriodicElementUser } from '../../../models/periodic-element-user.model';
 import { CreateUser } from '../../../models/base-element.model';
 import { UserService } from '../../../service/user.service';
+import { SharedModule } from '../../../shared/shared.module';
+
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -44,20 +46,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     ReactiveFormsModule,
     MatCheckboxModule,
     MatButtonModule,
-    ],
+    SharedModule,
+  ],
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css',
-  providers: [PeriodicElementUser]
+  providers: [PeriodicElementUser, UserService]
 })
 export class RegisterUserComponent {
-  userForm: FormGroup;
-  optionsType: FormGroup;
-
   register$ = new Observable<PeriodicElementUser[]>();
 
-  hide = true;
+  userForm: FormGroup;
+  statusFormGroup: FormGroup;
+  tipoFormGroup: FormGroup;
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+
+  hide = true;
 
   matcher = new MyErrorStateMatcher();
 
@@ -71,33 +74,57 @@ export class RegisterUserComponent {
       confirmPassword: ['', Validators.required],
     });
 
-    this.optionsType = this._formBuilder.group({
+    this.statusFormGroup = this._formBuilder.group({
       statusUser: ['true', Validators.required],
-      tipoUser: ['', Validators.required],
-
     });
 
-
+    this.tipoFormGroup = this._formBuilder.group({
+      tipoUser: ['false', Validators.required],
+    });
   }
 
   saveUserClick() {
-  if (this.userForm.valid) {
-    const newUser: CreateUser = this.userForm.value;
-    this.userService.createUser(newUser)
-      .subscribe({
-        next: (response) => {
-          console.log(response);
-        },
-        error: (error) => {
-          console.error(error);
-        },
-        complete: () => {
-          console.log('Operação concluída');
-        }
-      });
-  }
-}
+    console.log('saveUserClick foi chamado');
 
+    // Verifica se os formulários são válidos
+    if (this.userForm.valid && this.statusFormGroup.valid && this.tipoFormGroup.valid) {
+      // Combina os valores dos formulários em um único objeto
+      const newUser: CreateUser = {
+        ...this.userForm.value,
+        ...this.statusFormGroup.value,
+        ...this.tipoFormGroup.value
+      };
+      console.log(newUser);
+
+      // Chama o serviço para criar o usuário
+      this.userService.createUser(newUser)
+        .subscribe({
+          next: (response) => {
+            console.log(response);
+            this.userForm.reset();
+            this.statusFormGroup.reset();
+            this.tipoFormGroup.reset();
+          },
+          error: (error) => {
+            console.error(error);
+          },
+          complete: () => {
+            console.log('Operação concluída');
+          }
+        });
+    }
+
+    // Log de erros, se houver
+    if (!this.userForm.valid) {
+      console.log('Erros no userForm:', this.userForm.errors);
+    }
+    if (!this.statusFormGroup.valid) {
+      console.log('Erros no statusFormGroup:', this.statusFormGroup.errors);
+    }
+    if (!this.tipoFormGroup.valid) {
+      console.log('Erros no tipoFormGroup:', this.tipoFormGroup.errors);
+    }
+  }
 
 
 }

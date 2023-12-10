@@ -9,9 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditUserComponent } from '../../../component/edit-user/edit-user.component';
 import { PeriodicElementUser } from '../../../models/periodic-element-user.model';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { UserService } from '../../../service/user.service';
 import { SharedModule } from '../../../shared/shared.module';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-user-list',
@@ -42,13 +43,22 @@ export class UserListComponent {
   }
 
   obterUser() {
-    this.userService.obterUser().subscribe(data => {
+    this.userService.obterUser().pipe(
+      catchError((error: HttpErrorResponse) => {
+        return throwError(() => error);
+      })
+
+    ).subscribe(data => {
+      console.log('Dados recebidos do servidor:', data);
+
       this.dataToDisplay = data;
+      console.log('Dados para exibir:', this.dataToDisplay);
       this.dataSource = new MatTableDataSource(this.dataToDisplay);
+      console.log('DataSource:', this.dataSource);
     });
   }
 
-  displayedColumns: string[] = ['id_user', 'status', 'type', 'nameUser', 'email', 'edit', 'delete'];
+  displayedColumns: string[] = ['idUser', 'status', 'type', 'nameUser', 'email', 'edit', 'delete'];
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -63,8 +73,8 @@ export class UserListComponent {
     });
   }
 
-  removeData(id_user: number) {
-    const index = this.dataToDisplay.findIndex(element => element.id === id_user);
+  removeData(idUser: number) {
+    const index = this.dataToDisplay.findIndex(element => element.id === idUser);
     if (index !== -1) {
       this.dataToDisplay.splice(index, 1);
       this.dataSource = new MatTableDataSource(this.dataToDisplay);

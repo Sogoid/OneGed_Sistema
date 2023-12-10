@@ -4,13 +4,13 @@
       <div class="container-form_header">
         <div class="container-form_header_checkbox">
           <div class="container-form_header_checkbox-form">
-            <form [formGroup]="optionsType">
+            <form [formGroup]="statusFormGroup">
               <mat-checkbox formControlName="statusUser">STATUS</mat-checkbox>
             </form>
             <mat-hint>ATIVO / INATIVO</mat-hint>
           </div>
           <div class="container-form_header_checkbox-form">
-            <form [formGroup]="optionsType">
+            <form [formGroup]="tipoFormGroup">
               <mat-checkbox formControlName="tipoUser">TIPO</mat-checkbox>
             </form>
             <mat-hint>ADMINISTRADOR / USUÁRIO</mat-hint>
@@ -28,7 +28,6 @@
             <input
               type="text"
               matInput
-              maxlength="10"
               placeholder="Ex: JOAO DA SILVA"
               formControlName="nameUser"
             />
@@ -39,19 +38,11 @@
             <input
               type="email"
               matInput
-              [formControl]="emailFormControl"
               [errorStateMatcher]="matcher"
-              maxlength="10"
               placeholder="Ex: JOAO@email.com"
               formControlName="emailUser"
             />
             <mat-icon matSuffix>mail</mat-icon>
-            <!-- @if (emailFormControl.hasError('email') &&
-              !emailFormControl.hasError('required')) {
-                <mat-error>Please enter a valid email address</mat-error>
-              } @if (emailFormControl.hasError('required')) {
-                <mat-error>Email is <strong>required</strong></mat-error>
-              } -->
           </mat-form-field>
         </div>
         <div class="container-password">
