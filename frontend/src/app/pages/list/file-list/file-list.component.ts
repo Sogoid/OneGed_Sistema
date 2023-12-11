@@ -26,7 +26,7 @@ import { PeriodicElementFile } from '../../../models/periodic-element-file.model
   styleUrl: './file-list.component.css'
 })
 export class FileListComponent {
-  displayedColumns: string[] = ['id_documento', 'descricao', 'edit', 'delete'];
+  displayedColumns: string[] = ['idDocument', 'descricao', 'edit', 'delete'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   dataToDisplay: PeriodicElementFile[] = [...ELEMENT_DATA];
 
@@ -45,8 +45,8 @@ export class FileListComponent {
     });
   }
 
-  removeData(id_documento: number) {
-    const index = this.dataToDisplay.findIndex(element => element.id === id_documento);
+  removeData(idDocument: number) {
+    const index = this.dataToDisplay.findIndex(element => element.idDocument === idDocument);
     if (index !== -1) {
       this.dataToDisplay.splice(index, 1);
       this.dataSource = new MatTableDataSource(this.dataToDisplay);
@@ -56,6 +56,6 @@ export class FileListComponent {
 
 
 const ELEMENT_DATA: PeriodicElementFile[] = [
-  { id: 1, descricao: "1.0079" },
+  { idDocument: 1, descricao: "1.0079" },
 
 ];

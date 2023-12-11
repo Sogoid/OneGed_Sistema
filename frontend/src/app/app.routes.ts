@@ -7,6 +7,7 @@ import { UploadFileComponent } from './pages/upload-file/upload-file.component';
 import { RegisterUserComponent } from './pages/registration/register-user/register-user.component';
 import { RegisterGroupComponent } from './pages/registration/register-group/register-group.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { GroupListComponent } from './pages/list/group-list/group-list.component';
 
 export const routes: Routes = [
   {
@@ -44,6 +45,12 @@ export const routes: Routes = [
         component: UserListComponent,
         outlet: "main",
         title: "Lista de Usuário"
+      },
+      {
+        path: "group-list",
+        component: GroupListComponent,
+        outlet: "main",
+        title: "Lista de Grupo"
       },
       {
         path: "file-list",

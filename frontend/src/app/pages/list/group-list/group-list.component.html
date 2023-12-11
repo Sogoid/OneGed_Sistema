@@ -3,6 +3,7 @@
     <mat-form-field>
       <mat-label>Pesquisa</mat-label>
       <input
+        class="container-input"
         matInput
         (keyup)="applyFilter($event)"
         placeholder="Ex. ium"
@@ -12,15 +13,17 @@
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Código Column -->
-      <ng-container matColumnDef="idDocument">
+      <ng-container matColumnDef="idGroup">
         <th mat-header-cell *matHeaderCellDef>Código</th>
-        <td mat-cell *matCellDef="let element">{{ element.idDocument }}</td>
+        <td mat-cell *matCellDef="let element">{{ element.idGroup }}</td>
       </ng-container>
 
-      <!-- E-mail Column -->
-      <ng-container matColumnDef="descricao">
-        <th mat-header-cell *matHeaderCellDef>Descrição</th>
-        <td mat-cell *matCellDef="let element">{{ element.descricao }}</td>
+      <!-- Nome Column -->
+      <ng-container matColumnDef="descriptionGroup">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.descriptionGroup }}
+        </td>
       </ng-container>
 
       <!-- Edit Column -->
@@ -32,7 +35,7 @@
             aria-hidden="false"
             aria-label="Editar"
             fontIcon="edit"
-            (click)="openDialog()"
+            (click)="openDialog(element.idGroup)"
           ></mat-icon>
         </td>
       </ng-container>

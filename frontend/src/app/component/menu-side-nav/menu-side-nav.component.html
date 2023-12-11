@@ -58,6 +58,14 @@
       <button
         class="btn"
         mat-menu-item
+        [routerLink]="['/dashboard', { outlets: { main: 'group-list' } }]"
+      >
+        <mat-icon>lists</mat-icon>
+        <span> Grupo </span>
+      </button>
+      <button
+        class="btn"
+        mat-menu-item
         [routerLink]="['/dashboard', { outlets: { main: 'file-list' } }]"
       >
         <mat-icon>lists</mat-icon>

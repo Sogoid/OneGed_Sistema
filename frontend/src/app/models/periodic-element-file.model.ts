@@ -1,5 +1,4 @@
-import { BaseElement } from "./base-element.model";
-
-export class PeriodicElementFile extends BaseElement {
+export class PeriodicElementFile {
+  idDocument!: number;
   descricao: string = '';
 }

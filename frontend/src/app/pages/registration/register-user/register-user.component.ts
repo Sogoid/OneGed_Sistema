@@ -19,7 +19,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from "@angular/material/button";
 import { Observable } from 'rxjs';
 import { PeriodicElementUser } from '../../../models/periodic-element-user.model';
-import { CreateUser } from '../../../models/base-element.model';
 import { UserService } from '../../../service/user.service';
 import { SharedModule } from '../../../shared/shared.module';
 
@@ -89,7 +88,7 @@ export class RegisterUserComponent {
     // Verifica se os formulários são válidos
     if (this.userForm.valid && this.statusFormGroup.valid && this.tipoFormGroup.valid) {
       // Combina os valores dos formulários em um único objeto
-      const newUser: CreateUser = {
+      const newUser: PeriodicElementUser = {
         ...this.userForm.value,
         ...this.statusFormGroup.value,
         ...this.tipoFormGroup.value

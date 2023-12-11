@@ -2,7 +2,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { PeriodicElementUser } from '../models/periodic-element-user.model';
-import { CreateUser } from '../models/base-element.model';
 import { catchError, throwError } from 'rxjs';
 
 @Injectable({
@@ -27,8 +26,8 @@ export class UserService {
       );
   }
 
-  createUser(newUser: CreateUser) {
-    return this._httpClient.post<PeriodicElementUser[]>(`${this.url}/createUser`, newUser)
+  createUser(newUser: PeriodicElementUser) {
+    return this._httpClient.post<PeriodicElementUser[]>(`${this.url}/criar-usuario`, newUser)
       .pipe(
         catchError(this.handleError) // Tratamento de erros
       );

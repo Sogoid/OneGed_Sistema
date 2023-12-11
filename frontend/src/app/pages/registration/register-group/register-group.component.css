@@ -6,20 +6,18 @@
 }
 
 .container-form {
-  display: flex;
-  flex-direction: column;
   padding: 5em;
+
 }
 
-.container-form_header {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
+.mat-mdc-form-field {
+  min-width: 100%;
 }
 
-.container-form_header mat-form-field {
-  width: 8em;
+.mat-mdc-card-content {
+  padding: 0;
 }
+
 
 .btn {
   display: flex;

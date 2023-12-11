@@ -1,6 +1,5 @@
-import { BaseElement } from "./base-element.model";
-
-export class PeriodicElementUser extends BaseElement {
+export class PeriodicElementUser {
+  idUser!: number;
   nameUser: string = '';
   emailUser: string = '';
   statusUser: boolean = true;

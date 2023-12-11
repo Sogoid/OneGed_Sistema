@@ -2,11 +2,20 @@ package br.edu.ipog.backend.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ipog.backend.model.UserModel;
 import br.edu.ipog.backend.repositories.UserRepository;
 import br.edu.ipog.backend.service.UserService;
+
 @RestController
 @RequestMapping("/api")
 @CrossOrigin("http://localhost:4200")
@@ -23,12 +32,18 @@ public class UserController {
     // Endpoint de buscar os Users
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/lista-usuario")
-    public List<UserModel>getAllUser() {
+    public List<UserModel> getAllUser() {
         return userRepository.findAll();
     }
 
+    @GetMapping("/usuario/{idUser}")
+    public UserModel getGroupById(@PathVariable Long idUser) {
+        return userRepository.findById(idUser)
+                .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado"));
+    }
+
     @CrossOrigin("http://localhost:4200")
-    @PostMapping("/createUser")
+    @PostMapping("/criar-usuario")
     public UserModel registrar(@RequestBody UserModel userModel) {
         validarCampo(userModel.getNameUser(), "nameUser");
         validarCampo(userModel.getEmailUser(), "emailUser");
@@ -43,14 +58,23 @@ public class UserController {
     }
 
     @CrossOrigin("http://localhost:4200")
-    @PutMapping
-    public UserModel atualizar(@RequestBody UserModel userModel) {
-        return userRepository.save(userModel);
+    @PutMapping("/atualizar-usuario/{idGroup}")
+    public UserModel atualizarUser(@PathVariable Long idUser, @RequestBody UserModel newUserModel) {
+        return userRepository.findById(idUser)
+                .map(userModel -> {
+                    userModel.setEmailUser(newUserModel.getEmailUser());
+                    userModel.setSenhaUser(newUserModel.getSenhaUser());
+                    return userService.saveUser(userModel); // Salve o userModel atualizado
+                })
+                .orElseGet(() -> {
+                    newUserModel.setIdUser(idUser);
+                    return userService.saveUser(newUserModel);
+                });
     }
 
     @CrossOrigin("http://localhost:4200")
     @DeleteMapping("/{id_user}")
-    public void excluir(@PathVariable Long id_user) {
-        userRepository.deleteById(id_user);
+    public void excluir(@PathVariable Long idUser) {
+        userRepository.deleteById(idUser);
     }
 }
