@@ -3,7 +3,7 @@
 |:placard:  | PROJETO |
 | -------------  | --- |
 | :sparkles: Nome        | **Sistema OneGED**
-| :computer: Tecnologias | :heavy_check_mark: HTML / :heavy_check_mark: CSS / :heavy_check_mark: Angular - Front-End / :heavy_check_mark: Spring Boot - Back-End
+| :computer: Tecnologias | :heavy_check_mark: HTML / :heavy_check_mark: CSS / :heavy_check_mark: Angular versão 17- Front-End / :heavy_check_mark: Spring Boot Java versão 21 - Back-End
 | :open_file_folder: Repositório URL  | https://github.com/Sogoid/OneGed_Sistema.git
 
 ## Detalhe do Projeto
